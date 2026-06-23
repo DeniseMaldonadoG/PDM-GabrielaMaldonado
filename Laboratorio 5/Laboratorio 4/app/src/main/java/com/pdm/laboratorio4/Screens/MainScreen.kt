@@ -12,6 +12,8 @@ import androidx.compose.ui.unit.dp
 import com.pdm.laboratorio4.ViewModel.GeneralViewModel
 import java.text.SimpleDateFormat
 import java.util.Locale
+import androidx.compose.material3.TopAppBarDefaults
+import androidx.compose.ui.graphics.Color
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -22,7 +24,12 @@ fun Mainscreen(viewModel: GeneralViewModel, onNavigateToAdd: () -> Unit) {
 
     Scaffold(
         topBar = {
-            TopAppBar(title = { Text("Mis Tareas") })
+            TopAppBar(title = { Text("Mis Tareas")},
+                colors = TopAppBarDefaults.topAppBarColors(
+                    containerColor = MaterialTheme.colorScheme.primary,
+                    titleContentColor = Color.White
+                )
+                )
         }
     ) { padding ->
 

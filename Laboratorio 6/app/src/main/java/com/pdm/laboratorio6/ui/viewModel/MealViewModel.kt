@@ -28,16 +28,14 @@ class MealViewModel(
         viewModelScope.launch {
             _isLoading.value = true
             val result = repository.getMeal()
-            result
-                .onSuccess { meals ->
-                    _meals.value = meals
-                    _errorMessage.value = null
-                }
-                .onFailure { error ->
-                    error.printStackTrace()
-                    _errorMessage.value = error.message
-                }
+            result.onSuccess { list ->
+                _meals.value = list
+                _errorMessage.value = null
+            }.onFailure { error ->
+                _errorMessage.value = error.message
+            }
             _isLoading.value = false
         }
     }
-}
+    }
+
